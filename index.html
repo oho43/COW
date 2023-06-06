@@ -1,65 +1,1040 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Image Generation Project</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-  
-  <section id="hero">
-    <div class="hero-content">
-      <h1>Image Generation Project</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis semper magna.</p>
-      <a href="#services" class="btn">Learn More</a>
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="bootstrap.min.css" rel="stylesheet" />
+
+    <link rel="shortcut icon" href="https://research.google/static/images/favicon-6da5620880159634213e197fafca1dde0272153be3e4590818533fab8d040770.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link rel="canonical" href="https://imagen.research.google" />
+
+    <script src="jquery.min.js"></script>
+    <script src="jquery.flip.min.js"></script>
+
+    <script src="chart.min.js"></script>
+
+    <title>Imagen: Text-to-Image Diffusion Models</title>
+  </head>
+  <body>
+    <div class="demo">
+      <div class="terminal">
+        <p id="terminal"></p>
+      </div>
+      <div class="container">
+        <div class="dummy">
+          <div class="terminalflipcard" id="terminalflipcard">
+            <div class="front">
+            </div>
+            <div class="back">
+              <img id="terminal_image"></img>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </section>
-  
-  <section id="about">
-    <div class="container">
-      <h2>About</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis semper magna.</p>
-      <!-- Additional content about the project -->
+
+    <div style="padding-top: 50px; padding-bottom: 50px; background-color: rgb(0, 0, 0);">
+      <h1 style="text-align: center;">Imagen</h1>
+      <h2 class="nomobile" style="text-align: center;">unprecedented photorealism &times; deep level of language understanding</h2>
+      <h2 class="mobileonly" style="text-align: center;">unprecedented photorealism</h2>
+      <h2 class="mobileonly" style="text-align: center;">deep level of language understanding</h2>
     </div>
-  </section>
-  
-  <section id="services">
-    <div class="container">
-      <h2>Services</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis semper magna.</p>
-      <!-- Additional content about the project's services -->
+
+    <div class="authors">
+      <p>Google Research, Brain Team</p>
     </div>
-  </section>
-  
-  <section id="portfolio">
-    <div class="container">
-      <h2>Portfolio</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis semper magna.</p>
-      <!-- Showcase your project's portfolio -->
+
+    <div class="abstract">
+      <div class="inside">
+        <p class="text">
+          We present Imagen, a text-to-image diffusion model with an unprecedented degree of photorealism and a deep level of language understanding.
+          Imagen builds on the power of large transformer language models in understanding text and hinges on the strength of diffusion models in high-fidelity image generation.
+          Our key discovery is that generic large language models (e.g. T5), pretrained on text-only corpora, are surprisingly
+          effective at encoding text for image synthesis: increasing the size of the language model in Imagen boosts both sample fidelity and image-text
+          alignment much more than increasing the size of the image diffusion model.
+          Imagen achieves a new state-of-the-art FID score of 7.27 on the COCO dataset, without ever training on COCO, and human raters find Imagen samples to be on par with the COCO data itself in image-text alignment.
+          To assess text-to-image models in greater depth, we introduce DrawBench, a comprehensive and challenging benchmark for text-to-image models.
+          With DrawBench, we compare Imagen with recent methods including VQ-GAN+CLIP, Latent Diffusion Models, and DALL-E 2, and find that human raters prefer Imagen over other models in side-by-side comparisons, both in terms of sample quality and image-text alignment.
+        </p>
+        <a class="read-paper"  target="_blank" href="https://arxiv.org/abs/2205.11487"><button>Research Paper</button></a>
+        <a class="read-paper" style="margin-left: 20px;" target="_blank" href="https://docs.google.com/spreadsheets/d/1y7nAbmR4FREi6npB1u-Bo3GFdwdOPYJc617rBOxIRHY/edit#gid=0"><button>DrawBench</button></a>
+        <p style="margin-top: 70px; margin-bottom: 20px;">
+          More from the Imagen family:
+        </p>
+        <a class="read-paper" target="_blank" href="/video/"><button>Imagen Video</button></a>
+        <a class="read-paper" style="margin-left: 20px;" target="_blank" href="/editor/"><button>Imagen Editor</button></a>
+      </div>
     </div>
-  </section>
-  
-  <section id="contact">
-    <div class="container">
-      <h2>Contact</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis semper magna.</p>
-      <!-- Include a contact form or relevant contact information -->
+
+    <div class="image_8" id="gallery0">
+      <div class="flipcard" id="fig0">
+        <div class="front">
+          <figure>
+            <img src="./main_gallery_images/a-brain-riding-a-rocketship.jpg">
+            <figcaption>A brain riding a rocketship heading towards the moon.</figcaption>
+          </figure>
+        </div>
+        <div class="back">
+          <figure>
+            <img src="./main_gallery_images/a-brain-riding-a-rocketship.jpg">
+            <figcaption>A brain riding a rocketship heading towards the moon.</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="flipcard" id="fig1">
+        <div class="front">
+          <figure>
+            <img src="./main_gallery_images/a-dragon-fruit-wearing-karate-belt.jpg">
+            <figcaption>A dragon fruit wearing karate belt in the snow.</figcaption>
+          </figure>
+        </div>
+        <div class="back">
+          <figure>
+            <img src="./main_gallery_images/a-dragon-fruit-wearing-karate-belt.jpg">
+            <figcaption>A dragon fruit wearing karate belt in the snow.</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="flipcard nomobile" id="fig2">
+        <div class="front">
+          <figure>
+            <img src="./main_gallery_images/cactus.jpg">
+            <figcaption>A small cactus wearing a straw hat and neon sunglasses in the Sahara desert.</figcaption>
+          </figure>
+        </div>
+        <div class="back">
+          <figure>
+            <img src="./main_gallery_images/cactus.jpg">
+            <figcaption>A small cactus wearing a straw hat and neon sunglasses in the Sahara desert.</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="flipcard nomobile" id="fig3">
+        <div class="front">
+          <figure>
+            <img src="./main_gallery_images/a-photo-of-a-corgi-dog-riding-a-bike-in-times-square.jpg">
+            <figcaption>A photo of a Corgi dog riding a bike in Times Square. It is wearing sunglasses and a beach hat.</figcaption>
+          </figure>
+        </div>
+        <div class="back">
+          <figure>
+            <img src="./main_gallery_images/a-photo-of-a-corgi-dog-riding-a-bike-in-times-square.jpg">
+            <figcaption>A photo of a Corgi dog riding a bike in Times Square. It is wearing sunglasses and a beach hat.</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="flipcard nomobile" id="fig4">
+        <div class="front">
+          <figure>
+            <img src="./main_gallery_images/teddy-bear-swimming-butterfly.jpg">
+            <figcaption>Teddy bears swimming at the Olympics 400m Butterfly event.</figcaption>
+          </figure>
+        </div>
+        <div class="back">
+          <figure>
+            <img src="./main_gallery_images/teddy-bear-swimming-butterfly.jpg">
+            <figcaption>Teddy bears swimming at the Olympics 400m Butterfly event.</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="flipcard nomobile" id="fig5">
+        <div class="front">
+          <figure>
+            <img src="./main_gallery_images/sprouts-in-the-shape-of-text-imagen.jpg">
+            <figcaption>Sprouts in the shape of text 'Imagen' coming out of a fairytale book.</figcaption>
+          </figure>
+        </div>
+        <div class="back">
+          <figure>
+            <img src="./main_gallery_images/sprouts-in-the-shape-of-text-imagen.jpg">
+            <figcaption>Sprouts in the shape of text 'Imagen' coming out of a fairytale book.</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="flipcard nomobile" id="fig6">
+        <div class="front">
+          <figure>
+            <img src="./main_gallery_images/a-transparent-sculpture-of-a-duck-made-out-of-glass.jpg">
+            <figcaption>A transparent sculpture of a duck made out of glass. The sculpture is in front of a painting of a landscape.</figcaption>
+          </figure>
+        </div>
+        <div class="back">
+          <figure>
+            <img src="./main_gallery_images/a-transparent-sculpture-of-a-duck-made-out-of-glass.jpg">
+            <figcaption>A transparent sculpture of a duck made out of glass. The sculpture is in front of a painting of a landscape.</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="flipcard nomobile" id="fig7">
+        <div class="front">
+          <figure>
+            <img src="./main_gallery_images/a-single-beam-of.jpg">
+            <figcaption>A single beam of light enter the room from the ceiling. The beam of light is illuminating an easel. On the easel there is a Rembrandt painting of a raccoon.</figcaption>
+          </figure>
+        </div>
+        <div class="back">
+          <figure>
+            <img src="./main_gallery_images/a-single-beam-of.jpg">
+            <figcaption>A single beam of light enter the room from the ceiling. The beam of light is illuminating an easel. On the easel there is a Rembrandt painting of a raccoon.</figcaption>
+          </figure>
+        </div>
+      </div>
     </div>
-  </section>
-  
-  <footer>
-    <p>&copy; 2023 Your Company. All rights reserved.</p>
-  </footer>
-  
-  <script src="script.js"></script>
-</body>
+
+    <div class="header_dark_gray" style="background-color: rgb(35, 35, 35);">
+      <h1>Imagen is an AI system that creates photorealistic images from input text</h1>
+    </div>
+
+    <div class="white">
+      <figure>
+        <img src="./images/diagram.jpg">
+        <figcaption><p>Visualization of Imagen. Imagen uses a large frozen T5-XXL encoder to encode the input text into embeddings. A conditional diffusion model maps the text embedding into a 64&times;64 image. Imagen further utilizes text-conditional super-resolution diffusion models to upsample the image 64&times;64→256&times;256 and 256&times;256→1024&times;1024.</p></figcaption>
+      </figure>
+    </div>
+
+    <div class="header_dark_gray">
+      <h1>Large Pretrained Language Model &times; Cascaded Diffusion Model</h1>
+      <h2>deep textual understanding → photorealistic generation</h2>
+    </div>
+
+    <div class="content1">
+      <div>
+        <h1>Imagen research highlights</h1>
+        <ul class="highlights">
+          <li>We show that large pretrained frozen text encoders are very effective for the text-to-image task.</li>
+          <li>We show that scaling the pretrained text encoder size is more important than scaling the diffusion model size.</li>
+          <li>We introduce a new thresholding diffusion sampler, which enables the use of very large classifier-free guidance weights.</li>
+          <li>We introduce a new Efficient U-Net architecture, which is more compute efficient, more memory efficient, and converges faster.</li>
+          <li>On COCO, we achieve a new state-of-the-art COCO FID of 7.27; and human raters find Imagen samples to be on-par with reference images in terms of image-text alignment.</li>
+        </ul>
+      </div>
+      <div class="right" style="display: flex;">
+        <table class="pretty" style="align-self: center;">
+          <caption>Imagen attains a new state-of-the-art COCO FID.</caption>
+          <tr style="border-bottom: 3px solid rgb(26, 26, 26);">
+            <th>Model</th><th class="fid">COCO FID &darr;</th>
+          </tr>
+          <tr>
+            <td>Trained on COCO</td>
+          </tr>
+          <tr>
+            <td class="model">AttnGAN (Xu et al., 2017)</td><td class="fid">35.49</td>
+          </tr>
+          <tr>
+            <td class="model">DM-GAN (Zhu et al., 2019)</td><td class="fid">32.64</td>
+          </tr>
+          <tr>
+            <td class="model">DF-GAN (Tao et al., 2020)</td><td class="fid">21.42</td>
+          </tr>
+          <tr>
+            <td class="model">DM-GAN + CL (Ye et al., 2021)</td><td class="fid">20.79</td>
+          </tr>
+          <tr>
+            <td class="model">XMC-GAN (Zhang et al., 2021)</td><td class="fid">9.33</td>
+          </tr>
+          <tr>
+            <td class="model">LAFITE (Zhou et al., 2021)</td><td class="fid">8.12</td>
+          </tr>
+          <tr>
+            <td class="model">Make-A-Scene (Gafni et al., 2022)</td><td class="fid">7.55</td>
+          </tr>
+          <tr style="border-top: 1px solid rgb(26, 26, 26);">
+            <td>Not trained on COCO</td>
+          </tr>
+          <tr>
+            <td class="model">DALL-E (Ramesh et al., 2021)</td><td class="fid">17.89</td>
+          </tr>
+          <tr>
+            <td class="model">GLIDE (Nichol et al., 2021)</td><td class="fid">12.24</td>
+          </tr>
+          <tr>
+            <td class="model">DALL-E 2 (Ramesh et al., 2022)</td><td class="fid">10.39</td>
+          </tr>
+          <tr style="border-bottom: 3px solid rgb(26, 26, 26);">
+            <td class="model" style="font-weight: bold; color: rgb(26, 26, 26);">Imagen (Our Work)</td><td class="fid" style="font-weight: bold; color: rgb(26, 26, 26);">7.27</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="content1 reversed">
+      <div class="right">
+        <canvas id="drawBenchChart"></canvas>
+      </div>
+      <div>
+        <h1>DrawBench: new comprehensive challenging benchmark</h1>
+        <ul class="highlights">
+          <li>Side-by-side human evaluation.</li>
+          <li>Systematically test for: compositionality, cardinality, spatial relations, long-form text, rare words, and challenging prompts.</li>
+          <li>Human raters strongly prefer Imagen over other methods, in both image-text alignment and image fidelity.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="header_dark_gray">
+      <h1>State-of-the-art text-to-image</h1>
+      <h2>#1 in COCO FID &middot; #1 in DrawBench</h2>
+    </div>
+
+    <div class="compositional">
+      <div class="image">
+        <img src="" id="compositional_animals_img">
+      </div>
+      <div class="text" id="compositional_animals">
+        <h3>Click on a word below and Imagen!</h3>
+        <p class="selectable left"><span class="selected">A photo of a</span> <span>An oil painting of a</span><p>
+        <p class="selectable left"><span>fuzzy panda</span> <span class="selected">British Shorthair cat</span> <span>Persian cat</span> <span>Shiba Inu dog</span> <span>raccoon</span><p>
+        <p class="selectable left"><span class="selected">wearing a cowboy hat and</span> <span>wearing a sunglasses and</span></p>
+        <p class="selectable left"><span class="selected">red shirt</span> <span>black leather jacket</span></p>
+        <p class="selectable left"><span>playing a guitar</span> <span>riding a bike</span> <span class="selected">skateboarding</span></p>
+        <p class="selectable left"><span>in a garden.</span> <span class="selected">on a beach.</span> <span>on top of a mountain.</span></p>
+      </div>
+    </div>
+
+    <div class="header_dark_gray">
+      <h1>Related Work</h1>
+    </div>
+    <div class="limitations">
+      <div class="inside">
+        <p class="text">
+        Diffusion models have seen wide success in image generation [<a href="https://iterative-refinement.github.io/">1</a>, <a href="https://arxiv.org/pdf/2105.05233.pdf">2</a>, <a href="https://iterative-refinement.github.io/palette/">3</a>, <a href="https://cascaded-diffusion.github.io/">4</a>]. Autoregressive models [<a href="https://arxiv.org/pdf/1511.02793.pdf">5</a>], GANs [<a href="https://arxiv.org/pdf/1711.10485.pdf">6</a>, <a href="https://arxiv.org/pdf/2101.04702.pdf">7</a>] VQ-VAE Transformer based methods [<a href="https://arxiv.org/pdf/2102.12092.pdf">8</a>, <a href="https://arxiv.org/pdf/2203.13131.pdf">9</a>] have all made remarkable progress in text-to-image research. More recently, Diffusion models have been explored for text-to-image generation [<a href="https://arxiv.org/pdf/2112.10741.pdf">10</a>, <a href="https://arxiv.org/pdf/2112.10752.pdf">11</a>], including the concurrent work of DALL-E 2 [<a href="https://arxiv.org/pdf/2204.06125.pdf">12</a>]. DALL-E 2 uses a diffusion prior on CLIP latents, and cascaded diffusion models to generate high resolution 1024&times;1024 images. We believe Imagen is much simpler, as Imagen does not need to learn a latent prior, yet achieves better results in both MS-COCO FID and side-by-side human evaluation on DrawBench. GLIDE [<a href="https://arxiv.org/pdf/2112.10741.pdf">10</a>] also uses cascaded diffusions models for text-to-image, but Imagen uses larger pretrained frozen language models, which we found to be instrumental to both image fidelity and image-text alignment. XMC-GAN [<a href="https://arxiv.org/pdf/2101.04702.pdf">7</a>] also uses BERT as a text encoder, but we scale to much larger text encoders and demonstrate the effectiveness thereof. The use of cascaded diffusion models is also popular throughout the literature [<a href="https://arxiv.org/pdf/1506.05751.pdf">13</a>, <a href="https://arxiv.org/pdf/2012.09841.pdf">14</a>], and has been used with success in diffusion models to generate high resolution images [<a href="https://arxiv.org/pdf/2105.05233.pdf">2</a>, <a href="https://cascaded-diffusion.github.io/">3</a>]. Finally, Imagen is part of a series of text-to-image work at Google Research, including its sibling model <a href="https://parti.research.google/">Parti</a>.
+        </p>
+      </div>
+    </div>
+
+    <div class="header_dark_gray">
+      <h1>Limitations and Societal Impact</h1>
+    </div>
+
+    <div class="limitations">
+      <div class="inside">
+        <p class="text" style="padding: 0 0 25px 0;">
+          There are several ethical challenges facing text-to-image research broadly. We offer a more detailed exploration of these challenges in our paper and offer a summarized version here. First, downstream applications of  text-to-image models are varied and may impact society in complex ways. The potential risks of misuse raise concerns regarding responsible open-sourcing of code and demos. At this time we have decided not to release code or a public demo. In future work we will explore a framework for responsible externalization that balances the value of external auditing with the risks of unrestricted open-access.  Second, the data requirements of text-to-image models have led researchers to rely heavily on large, mostly uncurated, web-scraped datasets. While this approach has enabled rapid algorithmic advances in recent years, datasets of this nature often reflect social stereotypes, oppressive viewpoints, and derogatory, or otherwise harmful, associations to marginalized identity groups. While a subset of our training data was filtered to removed noise and undesirable content, such as pornographic imagery and toxic language, we also utilized LAION-400M dataset which is known to contain a wide range of inappropriate content including pornographic imagery, racist slurs, and harmful social stereotypes. Imagen relies on text encoders trained on uncurated web-scale data, and thus inherits the social biases and limitations of large language models. As such, there is a risk that Imagen has encoded harmful stereotypes and representations, which guides our decision to not release Imagen for public use without further safeguards in place.
+        </p>
+        <p class="text">
+          Finally, while there has been extensive work auditing image-to-text and image labeling models for forms of social bias, there has been comparatively less work on social bias evaluation methods for text-to-image models. A conceptual vocabulary around potential harms of text-to-image models and established metrics of evaluation are an essential component of establishing responsible model release practices. While we leave an in-depth empirical analysis of social and cultural biases to future work, our small scale internal assessments reveal several limitations that guide our decision not to release our model at this time.  Imagen, may run into danger of dropping modes of the data distribution, which may further compound the social consequence of dataset bias. Imagen exhibits serious limitations when generating images depicting people. Our human evaluations found Imagen obtains significantly higher preference rates when evaluated on images that do not portray people, indicating  a degradation in image fidelity. Preliminary assessment also suggests Imagen encodes several social biases and stereotypes, including an overall bias towards generating images of people with lighter skin tones and a tendency for images portraying different professions to align with Western gender stereotypes. Finally, even when we focus generations away from people, our preliminary analysis indicates Imagen encodes a range of social and cultural biases when generating images of activities, events, and objects. We aim to make progress on several of these open challenges and limitations in future work.
+        </p>
+      </div>
+    </div>
+
+    <div class="image_8" id="gallery1" style="background-color: rgb(26, 26, 26);">
+      <div class="flipcard" id="fig0">
+        <div class="front">
+          <figure>
+            <img src="./main_gallery_images/an-art-gallery-displaying-monet-paintings-the-art-gallery-is-flooded-robots.jpg">
+            <figcaption>An art gallery displaying Monet paintings. The art gallery is flooded. Robots are going around the art gallery using paddle boards.</figcaption>
+          </figure>
+        </div>
+        <div class="back">
+          <figure>
+            <img src="./main_gallery_images/an-art-gallery-displaying-monet-paintings-the-art-gallery-is-flooded-robots.jpg">
+            <figcaption>An art gallery displaying Monet paintings. The art gallery is flooded. Robots are going around the art gallery using paddle boards.</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="flipcard nomobile" id="fig1">
+        <div class="front">
+          <figure>
+            <img src="./main_gallery_images/a-majestic-oil-painting-of-a-raccoon-queen.jpg">
+            <figcaption>A majestic oil painting of a raccoon Queen wearing red French royal gown. The painting is hanging on an ornate wall decorated with wallpaper.</figcaption>
+          </figure>
+        </div>
+        <div class="back">
+          <figure>
+            <img src="./main_gallery_images/a-majestic-oil-painting-of-a-raccoon-queen.jpg">
+            <figcaption>A majestic oil painting of a raccoon Queen wearing red French royal gown. The painting is hanging on an ornate wall decorated with wallpaper.</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="flipcard nomobile" id="fig2">
+        <div class="front">
+          <figure>
+            <img src="./main_gallery_images/a-blue-jay-standing-on-a-large-basket-of-rainbow-macarons.jpg">
+            <figcaption>A blue jay standing on a large basket of rainbow macarons.</figcaption>
+          </figure>
+        </div>
+        <div class="back">
+          <figure>
+            <img src="./main_gallery_images/a-blue-jay-standing-on-a-large-basket-of-rainbow-macarons.jpg">
+            <figcaption>A blue jay standing on a large basket of rainbow macarons.</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="flipcard nomobile" id="fig3">
+        <div class="front">
+          <figure>
+            <img src="./main_gallery_images/corn-snake-on-farm.jpg">
+            <figcaption>A giant cobra snake on a farm. The snake is made out of corn.</figcaption>
+          </figure>
+        </div>
+        <div class="back">
+          <figure>
+            <img src="./main_gallery_images/corn-snake-on-farm.jpg">
+            <figcaption>A giant cobra snake on a farm. The snake is made out of corn.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="header_dark_gray">
+      <h1>Imagen</h1>
+      <h2>imagine &middot; illustrate &middot; inspire</h2>
+    </div>
+
+    <div class="content">
+      <h1>Authors</h1>
+      <p style="padding-bottom: 25px;">Chitwan Saharia<sup>*</sup>, William Chan<sup>*</sup>, Saurabh Saxena<sup>&dagger;</sup>, Lala Li<sup>&dagger;</sup>, Jay Whang<sup>&dagger;</sup>, Emily Denton, Seyed Kamyar Seyed Ghasemipour, Burcu Karagol Ayan, S. Sara Mahdavi, Rapha Gontijo Lopes, Tim Salimans, Jonathan Ho<sup>&dagger;</sup>, David Fleet<sup>&dagger;</sup>, Mohammad Norouzi<sup>*</sup></p>
+      <p class="smaller"><sup>*</sup>Equal contribution. <sup>&dagger;</sup>Core contribution.</p>
+      <h1>Special Thanks</h1>
+      <p class="smaller" style="text-align: justify;">We give thanks to Ben Poole for reviewing our manuscript, early discussions, and providing many helpful comments and suggestions throughout the project. Special thanks to Kathy Meier-Hellstern, Austin Tarango, and Sarah Laszlo for helping us incorporate important responsible AI practices around this project. We appreciate valuable feedback and support from Elizabeth Adkison, Zoubin Ghahramani, Jeff Dean, Yonghui Wu, and Eli Collins. We are grateful to Tom Small for designing the Imagen watermark. We thank Jason Baldridge, Han Zhang, and Kevin Murphy for initial discussions and feedback. We acknowledge hard work and support from Fred Alcober, Hibaq Ali, Marian Croak, Aaron Donsbach, Tulsee Doshi, Toju Duke, Douglas Eck, Jason Freidenfelds, Brian Gabriel, Molly FitzMorris, David Ha, Philip Parham, Laura Pearce, Evan Rapoport, Lauren Skelly, Johnny Soraker, Negar Rostamzadeh, Vijay Vasudevan, Tris Warkentin, Jeremy Weinstein, and Hugh Williams for giving us advice along the project and assisting us with the publication process. We thank Victor Gomes and Erica Moreira for their consistent and critical help with TPU resource allocation. We also give thanks to Shekoofeh Azizi, Harris Chan, Chris A. Lee, and Nick Ma for volunteering a considerable amount of their time for testing out DrawBench. We thank Aditya Ramesh, Prafulla Dhariwal, and Alex Nichol for allowing us to use DALL-E 2 samples and providing us with GLIDE samples. We are thankful to Matthew Johnson and Roy Frostig for starting the JAX project and to the whole JAX team for building such a fantastic system for high-performance machine learning research. Special thanks to Durk Kingma, Jascha Sohl-Dickstein, Lucas Theis and the Toronto Brain team for helpful discussions and spending time Imagening!</p>
+    </div>
+
+    <script type="text/javascript">
+      const data = {
+        labels: ['', ''],
+        datasets: [
+          {
+            label: 'Imagen',
+            data: [76.0, 78.6],
+            borderColor: "rgb(66, 133, 244)",
+            backgroundColor: "rgba(66, 133, 244, 0.2)",
+            stack: "gan",
+          },
+          {
+            label: 'VQ-GAN',
+            data: [24.0, 21.4],
+            borderColor: "rgb(0, 0, 0)",
+            backgroundColor: "rgb(204, 204, 204)",
+            stack: "gan",
+          },
+          {
+            label: 'Imagen',
+            data: [78.4, 66.5],
+            borderColor: "rgb(15, 157, 88)",
+            backgroundColor: "rgba(15, 157, 88, 0.2)",
+            stack: "latent",
+          },
+          {
+            label: 'LDM',
+            data: [21.6, 33.5],
+            borderColor: "rgb(207, 235, 222)",
+            backgroundColor: "rgb(204, 204, 204)",
+            stack: "latent",
+          },
+          {
+            label: 'Imagen',
+            data: [62.0, 66.0],
+            borderColor: "rgb(219, 68, 55)",
+            backgroundColor: "rgba(219, 68, 55, 0.2)",
+            stack: "dalle2",
+          },
+          {
+            label: 'DALL-E 2',
+            data: [38.0, 34.0],
+            borderColor: "rgb(219, 68, 55)",
+            backgroundColor: "rgb(204, 204, 204)",
+            stack: "dalle2",
+          },
+        ]
+      };
+
+      const writeTextOnBar = {
+        id: 'writeTextOnBar',
+        afterDraw: (chart) => {
+          var ctx = chart.ctx;
+          chart._metasets.forEach((meta, metaIdx) => {
+            meta.data.forEach((bar, barIdx) => {
+              ctx.save();
+              ctx.textBaseline = 'middle';
+              if (metaIdx % 2 == 0) {
+                ctx.fillText(meta.label, bar.x - bar.width + 10, bar.y);
+              } else {
+                ctx.textAlign = 'right';
+                ctx.fillStyle = '#FFFFFF';
+                ctx.fillText(meta.label, bar.x - 10, bar.y);
+              }
+              ctx.restore();
+
+              if (metaIdx == 2) {
+                ctx.save();
+                ctx.translate(bar.x - bar.width - 10, bar.y);
+                ctx.rotate(-Math.PI / 2.0);
+                ctx.textAlign = 'center';
+                if (barIdx == 0) {
+                  ctx.fillText('Alignment', 0, 0);
+                } else {
+                  ctx.fillText('Fidelity', 0, 0);
+                }
+                
+                ctx.restore();
+              }
+            });
+          });
+        },
+      }
+
+      const config = {
+        type: 'bar',
+        data: data,
+        options: {
+          indexAxis: 'y',
+          elements: {
+            bar: {
+              borderWidth: 0,
+            }
+          },
+          interaction: {
+            intersect: false,
+          },
+          scales: {
+            y: {
+              ticks: {
+                font: {
+                  size: function() {
+                    const isMobile = $(window).width() < 850;
+                    if (isMobile) {
+                      return 10;
+                    } else {
+                      return 14;
+                    }
+                  }
+                },
+                minRotation: function() {
+                  const isMobile = $(window).width() < 850;
+                  if (isMobile) {
+                    return 90;
+                  } else {
+                    return 90;
+                  }
+                },
+              },
+            },
+            x: {
+              min: 0.0,
+              max: 100.0,
+              stacked: true,
+              title: {
+                display: true,
+                text: "Imagen preference rates over other methods (%)",
+                font: {
+                  size: function() {
+                    const isMobile = $(window).width() < 850;
+                    if (isMobile) {
+                      return 12;
+                    } else {
+                      return 14;
+                    }
+                  }
+                },
+              },
+              ticks: {
+                stepSize: 50,
+                font: {
+                  size: function() {
+                    const isMobile = $(window).width() < 850;
+                    if (isMobile) {
+                      return 12;
+                    } else {
+                      return 14;
+                    }
+                  }
+                },
+              },
+            },
+          },
+          responsive: true,
+          maintainAspectRatio: false,
+          aspectRatio: function() {
+            const isMobile = $(window).width() < 850;
+            if (isMobile) {
+              return 1;
+            } else {
+              return 1;
+            }
+          },
+          plugins: {
+            legend: {
+              position: 'top',
+              display: false,
+              labels: {
+                font: {
+                  size: function() {
+                    const isMobile = $(window).width() < 850;
+                    if (isMobile) {
+                      return 12;
+                    } else {
+                      return 14;
+                    }
+                  }
+                },
+              },
+            },
+            title: {
+              display: true,
+              text: 'DrawBench: Imagen vs Other Methods',
+              font: {
+                size: function() {
+                  const isMobile = $(window).width() < 1280;
+                  if (isMobile) {
+                    return 14;
+                  } else {
+                    return 28;
+                  }
+                }
+              },
+            },
+            subtitle: {
+              display: true,
+              text: 'Human raters strongly prefer Imagen over other methods',
+              font: {
+                size: function() {
+                  const isMobile = $(window).width() < 1280;
+                  if (isMobile) {
+                    return 12;
+                  } else {
+                    return 14;
+                  }
+                }
+              },
+              padding: {
+                bottom: 25
+              }
+            },
+          },
+          events: [],
+        },
+        plugins: [writeTextOnBar],
+      };
+
+      Chart.defaults.font.family = "Roboto";
+      Chart.defaults.font.size = 14;
+      const myChart = new Chart(
+        document.getElementById('drawBenchChart'),
+        config
+      );
+
+      function renderChart() {
+        $("#drawBenchChart").height(
+          Math.min(400, $("#drawBenchChart").width()));
+        myChart.render();
+      }
+
+      renderChart();
+
+      $(window).resize(function() {
+        renderChart();
+      });
+    </script>
+
+
+    <script type="text/javascript">
+      images = [
+        {
+          "src": "./main_gallery_images/a-brain-riding-a-rocketship.jpg",
+          "caption": "A brain riding a rocketship heading towards the moon.",
+        },
+        {
+          "src": "./main_gallery_images/an-extreme-angry-bird.jpg",
+          "caption": "An extremely angry bird.",
+        },
+        {
+          "src": "./main_gallery_images/cactus.jpg",
+          "caption": "A small cactus wearing a straw hat and neon sunglasses in the Sahara desert.",
+        },
+        {
+          "src": "./main_gallery_images/an-alien-octopus-floats.jpg",
+          "caption": "An alien octopus floats through a portal reading a newspaper.",
+        },
+        {
+          "src": "./main_gallery_images/a-marble-statue-of-a-koala-dj.jpg",
+          "caption": "A marble statue of a Koala DJ in front of a marble statue of a turntable. The Koala has wearing large marble headphones.",
+        },
+        {
+          "src": "./main_gallery_images/teddy-bear-swimming-butterfly.jpg",
+          "caption": "Teddy bears swimming at the Olympics 400m Butterfly event.",
+        },
+        {
+          "src": "./main_gallery_images/corn-snake-on-farm.jpg",
+          "caption": "A giant cobra snake on a farm. The snake is made out of corn.",
+        },
+        {
+          "src": "./main_gallery_images/a-dog-looking-curiously.jpg",
+          "caption": "A dog looking curiously in the mirror, seeing a cat.",
+        },
+        {
+          "src": "./main_gallery_images/pomeranian-king-with-tiger-soldiers.jpg",
+          "caption": "A Pomeranian is sitting on the Kings throne wearing a crown. Two tiger soldiers are standing next to the throne.",
+        },
+        {
+          "src": "./main_gallery_images/a-dragon-fruit-wearing-karate-belt.jpg",
+          "caption": "A dragon fruit wearing karate belt in the snow.",
+        },
+        {
+          "src": "./main_gallery_images/a-bald-eagle-made-of-chocolate-powder.jpg",
+          "caption": "A bald eagle made of chocolate powder, mango, and whipped cream.",
+        },
+        {
+          "src": "./main_gallery_images/a-photo-of-a-corgi-dog-riding-a-bike-in-times-square.jpg",
+          "caption": "A photo of a Corgi dog riding a bike in Times Square. It is wearing sunglasses and a beach hat.",
+        },
+        {
+          "src": "./main_gallery_images/a-photo-of-a-raccoon-wearing-an-astronaut-helmet.jpg",
+          "caption": "A photo of a raccoon wearing an astronaut helmet, looking out of the window at night.",
+        },
+        {
+          "src": "./main_gallery_images/the-toronto-skyline-with-google-brain-logo.jpg",
+          "caption": "The Toronto skyline with Google brain logo written in fireworks.",
+        },
+        {
+          "src": "./main_gallery_images/a-chrome-plated-duck-with-a-golden-beak-arguing-with-an-angry-turtle.jpg",
+          "caption": "A chrome-plated duck with a golden beak arguing with an angry turtle in a forest.",
+        },
+        {
+          "src": "./main_gallery_images/an-art-gallery-displaying-monet-paintings-the-art-gallery-is-flooded-robots.jpg",
+          "caption": "An art gallery displaying Monet paintings. The art gallery is flooded. Robots are going around the art gallery using paddle boards.",
+        },
+        {
+          "src": "./main_gallery_images/a-strawberry-mug.jpg",
+          "caption": "A strawberry mug filled with white sesame seeds. The mug is floating in a dark chocolate sea."
+        },
+        {
+          "src": "./main_gallery_images/a-robot-couple-fine-dining.jpg",
+          "caption": "A robot couple fine dining with Eiffel Tower in the background."
+        },
+        {
+          "src": "./main_gallery_images/a-cute-corgi-lives-in-a-house-made-out-of-sushi.jpg",
+          "caption": "A cute corgi lives in a house made out of sushi."
+        },
+        {
+          "src": "./main_gallery_images/a-blue-jay-standing-on-a-large-basket-of-rainbow-macarons.jpg",
+          "caption": "A blue jay standing on a large basket of rainbow macarons."
+        },
+        {
+          "src": "./main_gallery_images/a-transparent-sculpture-of-a-duck-made-out-of-glass.jpg",
+          "caption": "A transparent sculpture of a duck made out of glass.",
+        },
+        {
+          "src": "./main_gallery_images/android-mascot-made-from-bamboo.jpg",
+          "caption": "Android Mascot made from bamboo.",
+        },
+        {
+          "src": "./main_gallery_images/sprouts-in-the-shape-of-text-imagen.jpg",
+          "caption": "Sprouts in the shape of text 'Imagen' coming out of a fairytale book.",
+        },
+        {
+          "src": "./main_gallery_images/a-wall-in-a-royal-castle.-there-are-two-paintings-on-the-wall.jpg",
+          "caption": "A wall in a royal castle. There are two paintings on the wall. The one on the left a detailed oil painting of the royal raccoon king. The one on the right a detailed oil painting of the royal raccoon queen.",
+        },
+        {
+          "src": "./main_gallery_images/a-majestic-oil-painting-of-a-raccoon-queen.jpg",
+          "caption": "A majestic oil painting of a raccoon Queen wearing red French royal gown. The painting is hanging on an ornate wall decorated with wallpaper.",
+        },
+        {
+          "src": "./main_gallery_images/a-transparent-sculpture-of-a-duck-made-out-of-glass.jpg",
+          "caption": "A transparent sculpture of a duck made out of glass. The sculpture is in front of a painting of a landscape.",
+        },
+        {
+          "src": "./main_gallery_images/a-single-beam-of.jpg",
+          "caption": "A single beam of light enter the room from the ceiling. The beam of light is illuminating an easel. On the easel there is a Rembrandt painting of a raccoon.",
+        },
+        {
+          "src": "./main_gallery_images/a-bucket-bag.jpg",
+          "caption": "A bucket bag made of blue suede. The bag is decorated with intricate golden paisley patterns. The handle of the bag is made of rubies and pearls.",
+        },
+        {
+          "src": "./main_gallery_images/three-spheres-made-of-glass-falling-into-ocean.-water-is-splashing.-sun-is-setti.jpg",
+          "caption": "Three spheres made of glass falling into ocean. Water is splashing. Sun is setting.",
+        },
+      ];
+
+      lastCardFlippedIdx = {
+        gallery0: -1,
+        gallery1: -1,
+      };
+
+      lastCardFlippedLastSwapTime = {
+        gallery0: -1,
+        gallery1: -1,
+      };
+
+      function checkIfImageIsVisible(name, image) {
+        numCards = $(name + " .flipcard:visible").size();
+
+        for (var cardIdx = 0; cardIdx < numCards; ++cardIdx) {
+          var isFlipped = $(name + " #fig" + cardIdx).data("flip-model").isFlipped;
+          if (!isFlipped) {
+            src = $(name + " #fig" + cardIdx + " div.front figure img").attr("src")
+          } else {
+            src = $(name + " #fig" + cardIdx + " div.back figure img").attr("src")
+          }
+
+          if (image.src == src) {
+            return true;
+          }
+        }
+        return false;
+      }
+
+      function getNextImage(name) {
+        while (true) {
+          randomImageIdx = Math.floor(Math.random() * images.length);
+          if (!checkIfImageIsVisible(name, images[randomImageIdx])) {
+            return images[randomImageIdx];
+          }
+        }
+      }
+
+      function randomSwapImageWithId(name, randomCardIdx) {
+        numCards = $(name + " .flipcard:visible").size();
+
+        image = getNextImage(name);
+
+        const d = new Date();
+        let currentTime = d.getTime();
+        lastCardFlippedIdx[name] = randomCardIdx;
+        lastCardFlippedLastSwapTime[name] = currentTime;
+
+        var isFlipped = $(name + " #fig" + randomCardIdx).data("flip-model").isFlipped;
+        if (!isFlipped) {
+          $(name + " #fig" + randomCardIdx + " div.back figure img").attr("src", image.src)
+          $(name + " #fig" + randomCardIdx + " div.back figure figcaption").text(image.caption)
+        } else {
+          $(name + " #fig" + randomCardIdx + " div.front figure img").attr("src", image.src)
+          $(name + " #fig" + randomCardIdx + " div.front figure figcaption").text(image.caption)
+        }
+
+        $(name + " #fig" + randomCardIdx).flip("toggle");
+      }
+
+      function randomSwapImage(name) {
+        numCards = $(name + " .flipcard:visible").size();
+
+        const d = new Date();
+        if (d.getTime() - lastCardFlippedIdx[name] < 5000) {
+          setTimeout(randomSwapImage, 1000, name);
+          return;
+        }
+
+        do {
+          randomCardIdx = Math.floor(Math.random() * numCards);
+          if (numCards == 1) {
+            break;
+          }
+        } while (randomCardIdx == lastCardFlippedIdx[name]);
+
+        randomSwapImageWithId(name, randomCardIdx);
+        setTimeout(randomSwapImage, 6000, name);
+      }
+      setTimeout(randomSwapImage, 6000, "#gallery0");
+      setTimeout(randomSwapImage, 7000, "#gallery1");
+
+      $("#gallery0 #fig0").click(
+        function() {
+          randomSwapImageWithId("#gallery0", 0);
+        }
+      );
+      $("#gallery0 #fig1").click(
+        function() {
+          randomSwapImageWithId("#gallery0", 1);
+        }
+      );
+      $("#gallery0 #fig2").click(
+        function() {
+          randomSwapImageWithId("#gallery0", 2);
+        }
+      );
+      $("#gallery0 #fig3").click(
+        function() {
+          randomSwapImageWithId("#gallery0", 3);
+        }
+      );
+      $("#gallery0 #fig4").click(
+        function() {
+          randomSwapImageWithId("#gallery0", 4);
+        }
+      );
+      $("#gallery0 #fig5").click(
+        function() {
+          randomSwapImageWithId("#gallery0", 5);
+        }
+      );
+      $("#gallery0 #fig6").click(
+        function() {
+          randomSwapImageWithId("#gallery0", 6);
+        }
+      );
+      $("#gallery0 #fig7").click(
+        function() {
+          randomSwapImageWithId("#gallery0", 7);
+        }
+      );
+
+      $("#gallery1 #fig0").click(
+        function() {
+          randomSwapImageWithId("#gallery1", 0);
+        }
+      );
+      $("#gallery1 #fig1").click(
+        function() {
+          randomSwapImageWithId("#gallery1", 1);
+        }
+      );
+      $("#gallery1 #fig2").click(
+        function() {
+          randomSwapImageWithId("#gallery1", 2);
+        }
+      );
+      $("#gallery1 #fig3").click(
+        function() {
+          randomSwapImageWithId("#gallery1", 3);
+        }
+      );
+    </script>
+
+    <script type="text/javascript">
+      function resetTerminalText() {
+        $("#terminal").html("");
+      }
+
+      function resetTerminal() {
+        $("#terminalflipcard").flip(false);
+        setTimeout(resetTerminalText, 250);
+      }
+
+      function typeTerminal(image) {
+        terminalTextIdx = 0;
+        (function typeChar() {
+          html = "<span class=\"typed\">";
+          html += image.caption.slice(0, ++terminalTextIdx);
+          html += "</span><span class=\"soon\">";
+          html += image.caption.slice(terminalTextIdx, image.caption.length);
+          html += "<span>";
+
+          $("#terminal").html(html);
+          if (terminalTextIdx < image.caption.length) {
+            setTimeout(typeChar, 20);
+          } else {
+            function displayImage() {
+              $("#terminal_image").attr("src", image.src);
+              $("#terminalflipcard").flip(true);
+            }
+
+            setTimeout(displayImage, 100);
+            setTimeout(resetTerminal, 5000);
+            setTimeout(randomNextTerminal, 6500);
+          }
+        })();
+      }
+
+      function randomNextTerminal() {
+        randomImageIdx = Math.floor(Math.random() * images.length);
+        image = images[randomImageIdx];
+
+        typeTerminal(image);
+      }
+
+      setTimeout(randomNextTerminal, 1000);
+      $(".flipcard").flip({
+        trigger: "manual",
+        reverse: false,
+      });
+      $("#terminalflipcard").flip({
+        trigger: "manual",
+        reverse: false,
+        speed: 500
+      });
+    </script>
+
+    <script type="text/javascript">
+      compositionalAnimalsManualClicked = false;
+      compositionalMadeOfManualClicked = false;
+      var root = '.';
+      if (window.location.host.includes('.appspot.com') || window.location.host.includes('research.google')) {
+              root = 'https://gweb-research-imagen.web.app';
+      }
+
+      function updateComposition(name) {
+        var compositionSpans = $(name + " p span.selected").map(function() {
+          return $(this).text();
+        }).get();
+        var compositionText = "";
+        for (var compositionSpansIdx = 0; compositionSpansIdx < compositionSpans.length; ++compositionSpansIdx) {
+          if (compositionSpansIdx > 0) {
+            compositionText += " ";
+          }
+          compositionText += compositionSpans[compositionSpansIdx];
+        }
+        if (name == "#compositional_madeof") {
+          randImgIdx = Math.floor(Math.random() * 8) + 1;
+          $(name + "_img").attr("src", "./playground_images/" + compositionText + "/" + randImgIdx + ".jpg");
+        } else if (name == "#compositional_animals") {
+          randImgIdx = Math.floor(Math.random() * 4);
+          $(name + "_img").attr("src", root + "/compositional/" + compositionText + "/" + randImgIdx + "_.jpeg");
+        }
+      }
+
+      function randomComposition(name) {
+        if (name == "#compositional_animals" && compositionalAnimalsManualClicked == true) {
+          compositionalAnimalsManualClicked = false;
+          setTimeout(randomComposition, 4000, name);
+          return;
+        } else if (name == "#compositional_madeof" &&
+                   compositionalMadeOfManualClicked == true) {
+          compositionalMadeOfManualClicked = false;
+          setTimeout(randomComposition, 4000, name);
+          return;
+        }
+
+        var compositionPs = $(name + " p.selectable").toArray();
+        var compositionOptions = [];
+        for (var i = 0; i < compositionPs.length; ++i) {
+          var compositionSpanSelected = $(compositionPs[i]).children("span.selected");
+          var compositionSpans = $(compositionPs[i]).children("span").not("span.selected").toArray();
+          for (var j = 0; j < compositionSpans.length; ++j) {
+            compositionOption = {
+              "p": compositionPs[i],
+              "span_selected": compositionSpanSelected,
+              "span_option": $(compositionSpans[j])
+            };
+            compositionOptions.push(compositionOption);
+          }
+        }
+
+        randomCompositionOptionIdx = Math.floor(Math.random() * compositionOptions.length);
+        randomCompositionOption = compositionOptions[randomCompositionOptionIdx];
+
+        randomCompositionOption.span_selected.toggleClass("selected");
+        randomCompositionOption.span_option.toggleClass("selected");
+
+        updateComposition(name);
+        setTimeout(randomComposition, 4000, name);
+      }
+
+      $("#compositional_animals p.selectable span").click(function() {
+        $(this).siblings().removeClass("selected");
+        $(this).addClass("selected");
+        updateComposition("#compositional_animals");
+        compositionalAnimalsManualClicked = true;
+      });
+
+      $("#compositional_madeof p.selectable span").click(function() {
+        $(this).siblings().removeClass("selected");
+        $(this).addClass("selected");
+        updateComposition("#compositional_madeof");
+        compositionalMadeOfManualClicked = true;
+      });
+
+      setTimeout(randomComposition, 2000, "#compositional_animals");
+      setTimeout(randomComposition, 4000, "#compositional_madeof");
+    </script>
+
+    <script src="bootstrap.bundle.min.js"></script>
+  </body>
 </html>
